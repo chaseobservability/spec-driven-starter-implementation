@@ -1,0 +1,44 @@
+name: ci
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate OpenAPI parses
+        run: |
+          python - <<'PY'
+          import yaml
+          yaml.safe_load(open("interfaces/api.openapi.yaml","r",encoding="utf-8"))
+          print("OK openapi")
+          PY
+
+      - name: Validate JSON schemas parse
+        run: |
+          python - <<'PY'
+          import json, glob
+          for p in glob.glob("schemas/*.json"):
+            json.load(open(p,"r",encoding="utf-8"))
+            print("OK schema", p)
+          PY
+
+      - name: Validate flows parse
+        run: |
+          python - <<'PY'
+          import glob, yaml
+          for p in glob.glob("flows/*.yaml"):
+            yaml.safe_load(open(p,"r",encoding="utf-8"))
+            print("OK flow", p)
+          PY
+
+      - name: Ensure governance files exist
+        run: |
+          test -f ROADMAP.md
+          test -f CONTRIBUTING.md
+          test -f RELEASE_CHECKLIST.md
+          test -f docs/ENGINEERING_GUIDELINES.md
+          test -f CHANGELOG.md

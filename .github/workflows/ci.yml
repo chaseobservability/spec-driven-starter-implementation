@@ -1,0 +1,36 @@
+name: ci
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+      - name: Install
+        run: pnpm i
+      - name: Validate pinned spec and OpenAPI
+        run: pnpm spec:validate
+      - name: Validate flows parse
+        run: |
+          python - <<'PY'
+          import glob, yaml
+          for p in glob.glob("spec/starter-spec-v*/flows/*.yaml"):
+            yaml.safe_load(open(p,'r',encoding='utf-8'))
+            print("OK flow:", p)
+          PY
+      - name: Ensure governance files exist
+        run: |
+          test -f ROADMAP.md
+          test -f CONTRIBUTING.md
+          test -f RELEASE_CHECKLIST.md
+          test -f docs/ENGINEERING_GUIDELINES.md
+          test -f CHANGELOG.md

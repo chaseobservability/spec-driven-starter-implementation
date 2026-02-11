@@ -1,0 +1,8 @@
+{
+  "name": "sean-grove-starter-implementation",
+  "private": true,
+  "packageManager": "pnpm@9.0.0",
+  "scripts": {
+    "spec:validate": "node tooling/spec-validate.mjs"
+  }
+}
