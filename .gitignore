@@ -1,0 +1,19 @@
+# OS/editor artifacts
+.DS_Store
+.vscode/
+.idea/
+
+# Local env files
+.env
+.env.*
+
+# Logs
+*.log
+
+# Node/build outputs
+node_modules/
+dist/
+coverage/
+
+# Bundle artifacts
+*.zip
