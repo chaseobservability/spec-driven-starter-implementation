@@ -5,6 +5,7 @@
 - Add second CI runtime path for real app execution when `app:ci:start` is defined.
 - Add architecture and release-linkage lints.
 - Expand pinned flow coverage with list and not-found journeys.
+- Add scheduled doc-gardener automation for low-risk docs drift fixes.
 - Specs pinned: chaseobservability/spec-driven-starter-spec@v0.1.2
 
 ## 0.1.3 — 2026-02-17
