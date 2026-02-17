@@ -27,12 +27,23 @@ print("OK: pinned spec validation and flow parse checks")
 PY
 ```
 
-Make your first implementation change:
-1. Update runtime contract in [`api/openapi.yaml`](api/openapi.yaml) only when aligned with pinned spec.
-2. Validate pin state with [`pnpm spec:validate`](package.json).
-3. If upstream spec changed, follow [`SPEC_TO_IMPLEMENTATION_UPGRADE_GUIDE.md`](SPEC_TO_IMPLEMENTATION_UPGRADE_GUIDE.md).
-4. Update [`CHANGELOG.md`](CHANGELOG.md) for user-visible changes.
-5. Open a PR and ensure CI is green.
+Agent-first first implementation change:
+1. Ask Codex to execute the change end-to-end.
+2. Review behavior and compatibility in the PR.
+3. Merge only after CI is green.
+
+Suggested Codex prompt:
+```text
+Implement <feature/fix> in this repository while preserving pinned-spec correctness.
+Do it end-to-end:
+- update implementation code and api/openapi.yaml as needed
+- keep alignment with spec/VERSION and spec/CHECKSUM
+- run pnpm spec:validate and local checks
+- if spec upgrade is required, follow SPEC_TO_IMPLEMENTATION_UPGRADE_GUIDE.md
+- update CHANGELOG.md for user-visible changes
+- open/push a PR and iterate until CI is green
+Return the PR link and a concise compatibility summary.
+```
 
 ## Spec pinning
 - Spec version is pinned in [`spec/VERSION`](spec/VERSION).
