@@ -5,6 +5,7 @@ A **spec-driven implementation** starter template designed to be paired with:
 - https://github.com/chaseobservability/spec-driven-starter-spec
 
 Inspired by Sean Grove’s talk (Spec-Driven Development): https://youtu.be/8rABwKRsec4
+
 Harness engineering reference: https://openai.com/index/harness-engineering/
 
 ## Spec pinning
