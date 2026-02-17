@@ -25,6 +25,8 @@ REQUIRED_FILES = [
     "tooling/fixture_runtime_server.py",
     "tooling/architecture_lint.py",
     "tooling/release_linkage_lint.py",
+    ".github/workflows/doc-gardener.yml",
+    "tooling/doc_gardener.py",
 ]
 
 REQUIRED_DIRS = [

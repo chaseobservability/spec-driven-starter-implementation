@@ -115,9 +115,9 @@ Spec‑Driven Development requires:
 
 ## Summary
 
-Specs define truth.  
-Implementation proves compliance.  
-CI enforces alignment.  
+Specs define truth.
+Implementation proves compliance.
+CI enforces alignment.
 Versioning preserves integrity.
 
 That is Spec‑Driven Development.
