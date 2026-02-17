@@ -120,6 +120,6 @@ Followed by:
 ## Recommended Release Notes (implementation)
 
 Include:
-- `Specs pinned: bodyobservability/spec-driven-starter-spec@vX.Y.Z`
+- `Specs pinned: chaseobservability/spec-driven-starter-spec@vX.Y.Z`
 - contract changes summary
 - migration notes (if any)
