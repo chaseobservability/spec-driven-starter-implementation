@@ -48,7 +48,7 @@ python3 tooling/flow_runtime_eval.py \
 CI always executes runtime flows using a deterministic fixture server:
 - [`tooling/fixture_runtime_server.py`](tooling/fixture_runtime_server.py)
 - [`tooling/flow_runtime_eval.py`](tooling/flow_runtime_eval.py)
-- CI also runs a second `runtime-real` job when `package.json` defines `app:ci:start`.
+- CI also runs a second `runtime-real` job and executes real runtime evaluation only when `package.json` defines `app:ci:start`.
 
 Agent-first first implementation change:
 1. Ask Codex to execute the change end-to-end.
@@ -98,6 +98,7 @@ See [`SPEC_DRIVEN_DEVELOPMENT_PHILOSOPHY.md`](SPEC_DRIVEN_DEVELOPMENT_PHILOSOPHY
 - Agent map: [`AGENTS.md`](AGENTS.md)
 - Harness index: [`docs/index.md`](docs/index.md)
 - Starter pack contract: [`SDD_STARTER_PACK_CONTRACT.md`](SDD_STARTER_PACK_CONTRACT.md)
+- Doc-gardener automation: [`.github/workflows/doc-gardener.yml`](.github/workflows/doc-gardener.yml)
 - Philosophy: [`SPEC_DRIVEN_DEVELOPMENT_PHILOSOPHY.md`](SPEC_DRIVEN_DEVELOPMENT_PHILOSOPHY.md)
 - Engineering guidelines: [`docs/ENGINEERING_GUIDELINES.md`](docs/ENGINEERING_GUIDELINES.md)
 - ADR template: [`docs/decisions/ADR_TEMPLATE.md`](docs/decisions/ADR_TEMPLATE.md)
