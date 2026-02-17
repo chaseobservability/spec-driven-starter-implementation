@@ -3,6 +3,9 @@
   "private": true,
   "packageManager": "pnpm@9.0.0",
   "scripts": {
-    "spec:validate": "node tooling/spec-validate.mjs"
+    "spec:validate": "node tooling/spec-validate.mjs",
+    "flow:contract:eval": "python3 tooling/flow_contract_eval.py",
+    "flow:runtime:eval": "python3 tooling/flow_runtime_eval.py",
+    "harness:lint": "python3 tooling/harness_lint.py"
   }
 }
