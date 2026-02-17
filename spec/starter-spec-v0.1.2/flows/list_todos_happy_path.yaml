@@ -1,0 +1,25 @@
+name: LIST_TODOS_HAPPY_PATH
+version: 0.1
+slo:
+  max_step_latency_ms: 1200
+  max_error_rate_pct: 0
+steps:
+  - action: create_todo
+    request:
+      title: "Buy milk"
+    expect_status: 201
+    expect_latency_ms: 1000
+  - action: create_todo
+    request:
+      title: "Walk dog"
+    expect_status: 201
+    expect_latency_ms: 1000
+  - action: list_todos
+    expect_status: 200
+    expect_latency_ms: 1000
+    expect_body:
+      length_gte: 2
+      all_have_fields:
+        - id
+        - title
+        - completed

@@ -1,10 +1,18 @@
 # Changelog
 
+## 0.1.4 — 2026-02-17
+- Add SLO-aware runtime flow evaluation (latency and error-rate assertions).
+- Add second CI runtime path for real app execution when `app:ci:start` is defined.
+- Add architecture and release-linkage lints.
+- Expand pinned flow coverage with list and not-found journeys.
+- Specs pinned: chaseobservability/spec-driven-starter-spec@v0.1.2
+
 ## 0.1.3 — 2026-02-17
 - Add runtime flow evaluator that executes pinned flow fixtures against a live HTTP runtime.
 - Add deterministic fixture runtime server and make runtime flow evaluation always-on in CI.
 - Add harness lint and flow evaluation scripts to package scripts and docs.
 - Refine README onboarding headings for clearer navigation.
+- Specs pinned: chaseobservability/spec-driven-starter-spec@v0.1.3
 
 ## 0.1.2 — 2026-02-17
 - Upgrade pinned spec snapshot to `v0.1.1` and vendor updated artifacts.

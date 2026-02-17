@@ -7,6 +7,8 @@
     "flow:contract:eval": "python3 tooling/flow_contract_eval.py",
     "flow:runtime:eval": "python3 tooling/flow_runtime_eval.py",
     "fixture:runtime": "python3 tooling/fixture_runtime_server.py",
-    "harness:lint": "python3 tooling/harness_lint.py"
+    "harness:lint": "python3 tooling/harness_lint.py",
+    "architecture:lint": "python3 tooling/architecture_lint.py",
+    "release:linkage:lint": "python3 tooling/release_linkage_lint.py"
   }
 }

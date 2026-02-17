@@ -1,0 +1,11 @@
+name: GET_TODO_NOT_FOUND
+version: 0.1
+slo:
+  max_step_latency_ms: 1200
+  max_error_rate_pct: 0
+steps:
+  - action: get_todo
+    params:
+      id: "missing-id"
+    expect_status: 404
+    expect_latency_ms: 1000

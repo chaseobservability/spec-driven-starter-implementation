@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ACTION_MAP = {
     "health_check": ("/health", "get"),
     "create_todo": ("/todos", "post"),
+    "list_todos": ("/todos", "get"),
     "get_todo": ("/todos/{id}", "get"),
 }
 

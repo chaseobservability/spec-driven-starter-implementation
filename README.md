@@ -19,6 +19,8 @@ Validate the pinned spec and implementation contract locally:
 
 ```bash
 python3 tooling/harness_lint.py
+python3 tooling/architecture_lint.py
+python3 tooling/release_linkage_lint.py
 pnpm spec:validate
 python3 tooling/flow_contract_eval.py
 python3 - <<'PY'
@@ -46,6 +48,7 @@ python3 tooling/flow_runtime_eval.py \
 CI always executes runtime flows using a deterministic fixture server:
 - [`tooling/fixture_runtime_server.py`](tooling/fixture_runtime_server.py)
 - [`tooling/flow_runtime_eval.py`](tooling/flow_runtime_eval.py)
+- CI also runs a second `runtime-real` job when `package.json` defines `app:ci:start`.
 
 Agent-first first implementation change:
 1. Ask Codex to execute the change end-to-end.
@@ -81,6 +84,8 @@ Return the PR link and a concise compatibility summary.
 ## Scripts
 - [`pnpm spec:validate`](package.json) verifies pinned spec artifacts exist
 - [`pnpm harness:lint`](package.json) validates harness structure and docs links
+- [`pnpm architecture:lint`](package.json) enforces starter structural guardrails
+- [`pnpm release:linkage:lint`](package.json) ensures latest changelog links to pinned spec tag
 - [`pnpm flow:contract:eval`](package.json) validates flow fixtures against OpenAPI declarations
 - [`pnpm flow:runtime:eval`](package.json) executes flow fixtures against a running runtime
 - [`pnpm fixture:runtime`](package.json) starts a deterministic runtime for flow evaluation

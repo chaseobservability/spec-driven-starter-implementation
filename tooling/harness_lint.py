@@ -23,6 +23,8 @@ REQUIRED_FILES = [
     "tooling/spec-validate.mjs",
     "tooling/flow_runtime_eval.py",
     "tooling/fixture_runtime_server.py",
+    "tooling/architecture_lint.py",
+    "tooling/release_linkage_lint.py",
 ]
 
 REQUIRED_DIRS = [

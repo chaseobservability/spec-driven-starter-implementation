@@ -1,0 +1,9 @@
+name: HAPPY_PATH
+version: 0.1
+slo:
+  max_step_latency_ms: 800
+  max_error_rate_pct: 0
+steps:
+  - action: health_check
+    expect_status: 200
+    expect_latency_ms: 500

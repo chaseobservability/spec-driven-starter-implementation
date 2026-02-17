@@ -47,13 +47,56 @@ jobs:
       - name: Harness lint
         run: python3 tooling/harness_lint.py
 
+      - name: Architecture lint
+        run: python3 tooling/architecture_lint.py
+
+      - name: Release linkage lint
+        run: python3 tooling/release_linkage_lint.py
+
       - name: Evaluate flow contract coverage
         run: python3 tooling/flow_contract_eval.py
 
-      - name: Evaluate runtime flows
+      - name: Evaluate runtime flows (fixture)
         run: |
           python3 tooling/flow_runtime_eval.py \
             --base-url "http://127.0.0.1:38080" \
             --start-cmd "python3 tooling/fixture_runtime_server.py" \
             --wait-path "/health" \
             --wait-timeout-sec 60
+
+  runtime-real:
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install
+        run: pnpm i
+      - name: Detect real-runtime script
+        id: detect
+        run: |
+          node - <<'NODE'
+          const pkg = require('./package.json');
+          const scripts = pkg.scripts || {};
+          const has = Object.prototype.hasOwnProperty.call(scripts, 'app:ci:start');
+          console.log(has ? 'has_script=true' : 'has_script=false');
+          NODE
+          if node -e "const s=(require('./package.json').scripts||{}); process.exit(s['app:ci:start']?0:1)"; then
+            echo "has_script=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_script=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Evaluate runtime flows (real app)
+        if: steps.detect.outputs.has_script == 'true'
+        run: |
+          python3 tooling/flow_runtime_eval.py \
+            --base-url "http://127.0.0.1:3000" \
+            --start-cmd "pnpm run app:ci:start" \
+            --wait-path "/health" \
+            --wait-timeout-sec 120
+      - name: Real-runtime status
+        if: steps.detect.outputs.has_script != 'true'
+        run: echo "SKIP: define package.json script app:ci:start to enable real runtime eval job"
