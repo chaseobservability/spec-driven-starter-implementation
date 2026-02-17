@@ -43,6 +43,10 @@ python3 tooling/flow_runtime_eval.py \
   --wait-timeout-sec 90
 ```
 
+CI always executes runtime flows using a deterministic fixture server:
+- [`tooling/fixture_runtime_server.py`](tooling/fixture_runtime_server.py)
+- [`tooling/flow_runtime_eval.py`](tooling/flow_runtime_eval.py)
+
 Agent-first first implementation change:
 1. Ask Codex to execute the change end-to-end.
 2. Review behavior and compatibility in the PR.
@@ -79,6 +83,7 @@ Return the PR link and a concise compatibility summary.
 - [`pnpm harness:lint`](package.json) validates harness structure and docs links
 - [`pnpm flow:contract:eval`](package.json) validates flow fixtures against OpenAPI declarations
 - [`pnpm flow:runtime:eval`](package.json) executes flow fixtures against a running runtime
+- [`pnpm fixture:runtime`](package.json) starts a deterministic runtime for flow evaluation
 
 
 ## Philosophy

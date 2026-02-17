@@ -22,6 +22,7 @@ REQUIRED_FILES = [
     "spec/CHECKSUM",
     "tooling/spec-validate.mjs",
     "tooling/flow_runtime_eval.py",
+    "tooling/fixture_runtime_server.py",
 ]
 
 REQUIRED_DIRS = [

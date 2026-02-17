@@ -50,11 +50,10 @@ jobs:
       - name: Evaluate flow contract coverage
         run: python3 tooling/flow_contract_eval.py
 
-      - name: Evaluate runtime flows (opt-in)
-        if: ${{ env.RUNTIME_EVAL_BASE_URL != '' || env.RUNTIME_EVAL_START_CMD != '' }}
+      - name: Evaluate runtime flows
         run: |
           python3 tooling/flow_runtime_eval.py \
-            --base-url "${RUNTIME_EVAL_BASE_URL:-http://127.0.0.1:3000}" \
-            --start-cmd "${RUNTIME_EVAL_START_CMD}" \
-            --wait-path "${RUNTIME_EVAL_WAIT_PATH:-/health}" \
-            --wait-timeout-sec "${RUNTIME_EVAL_WAIT_TIMEOUT_SEC:-60}"
+            --base-url "http://127.0.0.1:38080" \
+            --start-cmd "python3 tooling/fixture_runtime_server.py" \
+            --wait-path "/health" \
+            --wait-timeout-sec 60
