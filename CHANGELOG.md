@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.3 — 2026-02-17
+- Add runtime flow evaluator that executes pinned flow fixtures against a live HTTP runtime.
+- Add deterministic fixture runtime server and make runtime flow evaluation always-on in CI.
+- Add harness lint and flow evaluation scripts to package scripts and docs.
+- Refine README onboarding headings for clearer navigation.
+
 ## 0.1.2 — 2026-02-17
 - Upgrade pinned spec snapshot to `v0.1.1` and vendor updated artifacts.
 - Align implementation OpenAPI with pinned spec snapshot.
