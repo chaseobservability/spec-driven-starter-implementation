@@ -31,3 +31,15 @@ jobs:
           test -f RELEASE_CHECKLIST.md
           test -f docs/ENGINEERING_GUIDELINES.md
           test -f CHANGELOG.md
+
+      - name: Ensure harness files exist
+        run: |
+          test -f AGENTS.md
+          test -f SDD_STARTER_PACK_CONTRACT.md
+          test -f docs/index.md
+          test -f docs/architecture/index.md
+          test -f docs/product-specs/index.md
+          test -f docs/references/index.md
+          test -f docs/exec-plans/tech-debt-tracker.md
+          test -d docs/exec-plans/active
+          test -d docs/exec-plans/completed

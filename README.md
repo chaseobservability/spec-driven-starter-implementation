@@ -27,6 +27,9 @@ Inspired by Sean Grove’s talk (Spec-Driven Development): https://youtu.be/8rAB
 See `SPEC_DRIVEN_DEVELOPMENT_PHILOSOPHY.md`.
 
 ## Docs
+- Agent map: `AGENTS.md`
+- Harness index: `docs/index.md`
+- Starter pack contract: `SDD_STARTER_PACK_CONTRACT.md`
 - Philosophy: `SPEC_DRIVEN_DEVELOPMENT_PHILOSOPHY.md`
 - Engineering guidelines: `docs/ENGINEERING_GUIDELINES.md`
 - ADR template: `docs/decisions/ADR_TEMPLATE.md`
