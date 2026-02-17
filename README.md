@@ -8,6 +8,32 @@ Inspired by Sean Grove’s talk (Spec-Driven Development): [YouTube](https://you
 
 Harness engineering reference: [OpenAI Harness Engineering](https://openai.com/index/harness-engineering/)
 
+## Quickstart
+```bash
+git clone git@github.com:chaseobservability/spec-driven-starter-implementation.git
+cd spec-driven-starter-implementation
+pnpm i
+```
+
+Validate the pinned spec and implementation contract locally:
+
+```bash
+pnpm spec:validate
+python3 - <<'PY'
+import glob, yaml
+for p in glob.glob("spec/starter-spec-v*/flows/*.yaml"):
+  yaml.safe_load(open(p,"r",encoding="utf-8"))
+print("OK: pinned spec validation and flow parse checks")
+PY
+```
+
+Make your first implementation change:
+1. Update runtime contract in [`api/openapi.yaml`](api/openapi.yaml) only when aligned with pinned spec.
+2. Validate pin state with [`pnpm spec:validate`](package.json).
+3. If upstream spec changed, follow [`SPEC_TO_IMPLEMENTATION_UPGRADE_GUIDE.md`](SPEC_TO_IMPLEMENTATION_UPGRADE_GUIDE.md).
+4. Update [`CHANGELOG.md`](CHANGELOG.md) for user-visible changes.
+5. Open a PR and ensure CI is green.
+
 ## Spec pinning
 - Spec version is pinned in [`spec/VERSION`](spec/VERSION).
 - Vendored spec snapshot is in [`spec/starter-spec-v<version>/`](spec/).
