@@ -8,7 +8,7 @@ Inspired by Sean Grove’s talk (Spec-Driven Development): [YouTube](https://you
 
 Harness engineering reference: [OpenAI Harness Engineering](https://openai.com/index/harness-engineering/)
 
-## Quickstart
+## Get Started
 ```bash
 git clone git@github.com:chaseobservability/spec-driven-starter-implementation.git
 cd spec-driven-starter-implementation
@@ -27,6 +27,20 @@ for p in glob.glob("spec/starter-spec-v*/flows/*.yaml"):
   yaml.safe_load(open(p,"r",encoding="utf-8"))
 print("OK: pinned spec validation and flow parse checks")
 PY
+```
+
+Execute runtime flows against a running app:
+
+```bash
+# Option A: app already running
+python3 tooling/flow_runtime_eval.py --base-url http://127.0.0.1:3000
+
+# Option B: evaluator starts app process, waits on /health, then runs flows
+python3 tooling/flow_runtime_eval.py \
+  --base-url http://127.0.0.1:3000 \
+  --start-cmd "pnpm dev" \
+  --wait-path /health \
+  --wait-timeout-sec 90
 ```
 
 Agent-first first implementation change:
@@ -55,13 +69,16 @@ Return the PR link and a concise compatibility summary.
   - OpenAPI matches spec
   - flow fixtures parse
 
-## Where to start
+## Key References
 - Engineering guidelines: [`docs/ENGINEERING_GUIDELINES.md`](docs/ENGINEERING_GUIDELINES.md)
 - Roadmap: [`ROADMAP.md`](ROADMAP.md)
 - CI: [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
 
 ## Scripts
 - [`pnpm spec:validate`](package.json) verifies pinned spec artifacts exist
+- [`pnpm harness:lint`](package.json) validates harness structure and docs links
+- [`pnpm flow:contract:eval`](package.json) validates flow fixtures against OpenAPI declarations
+- [`pnpm flow:runtime:eval`](package.json) executes flow fixtures against a running runtime
 
 
 ## Philosophy
