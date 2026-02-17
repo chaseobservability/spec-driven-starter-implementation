@@ -1,0 +1,23 @@
+name: CREATE_TODO_HAPPY_PATH
+version: 0.1
+steps:
+  - action: create_todo
+    request:
+      title: "Buy milk"
+      dueDate: "2026-02-20"
+    expect_status: 201
+    expect_body:
+      has_fields:
+        - id
+        - title
+        - completed
+      equals:
+        title: "Buy milk"
+        completed: false
+  - action: get_todo
+    params:
+      id_from_previous: id
+    expect_status: 200
+    expect_body:
+      equals:
+        title: "Buy milk"

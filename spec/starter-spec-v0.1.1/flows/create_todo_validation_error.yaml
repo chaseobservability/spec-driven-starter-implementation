@@ -1,0 +1,12 @@
+name: CREATE_TODO_VALIDATION_ERROR
+version: 0.1
+steps:
+  - action: create_todo
+    request:
+      title: ""
+    expect_status: 422
+    expect_body:
+      has_fields:
+        - error
+      contains:
+        error: "validation"

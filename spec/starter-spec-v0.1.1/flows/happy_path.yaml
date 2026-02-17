@@ -1,0 +1,5 @@
+name: HAPPY_PATH
+version: 0.1
+steps:
+  - action: health_check
+    expect_status: 200
