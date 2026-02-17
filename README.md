@@ -18,7 +18,9 @@ pnpm i
 Validate the pinned spec and implementation contract locally:
 
 ```bash
+python3 tooling/harness_lint.py
 pnpm spec:validate
+python3 tooling/flow_contract_eval.py
 python3 - <<'PY'
 import glob, yaml
 for p in glob.glob("spec/starter-spec-v*/flows/*.yaml"):

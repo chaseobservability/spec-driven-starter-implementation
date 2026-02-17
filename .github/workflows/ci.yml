@@ -43,3 +43,9 @@ jobs:
           test -f docs/exec-plans/tech-debt-tracker.md
           test -d docs/exec-plans/active
           test -d docs/exec-plans/completed
+
+      - name: Harness lint
+        run: python3 tooling/harness_lint.py
+
+      - name: Evaluate flow contract coverage
+        run: python3 tooling/flow_contract_eval.py
